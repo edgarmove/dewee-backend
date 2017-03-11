@@ -51,7 +51,7 @@ router.get('/',function(req, res){
  
 app.post('/ledon', function (req, res) {
       var message = {
-      topic: '/dewee/led',
+      topic: '/dewee/led/',
       payload: '1', // or a Buffer
       qos: 0, // 0, 1, or 2
       retain: false // or true
@@ -64,7 +64,7 @@ app.post('/ledon', function (req, res) {
 
 app.post('/ledoff', function (req, res) {
       var message = {
-      topic: '/dewee/led',
+      topic: '/dewee/led/',
       payload: '0', // or a Buffer
       qos: 0, // 0, 1, or 2
       retain: false // or true
