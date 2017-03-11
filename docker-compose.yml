@@ -1,0 +1,16 @@
+
+version: '2'
+services:
+  dewee-backend:
+    image: move/dewee-backend
+    ports:
+      - "8099:8080"
+      - "1883:1883"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
