@@ -43,19 +43,23 @@ var router = express.Router();
   
 var path = __dirname + '/views/';
   
-app.use('/',router);
+//app.use('/',router);
+
+// parse html forms
+app.use(bodyParser.urlencoded({ extended : false }));
   
-router.get('/',function(req, res){
+app.get('/',function(req, res){
   res.sendFile(path + 'index.html');
 });
  
 app.post('/ledon', function (req, res) {
       var message = {
-      topic: '/dewee/led/',
+      topic: '',
       payload: '1', // or a Buffer
       qos: 0, // 0, 1, or 2
       retain: false // or true
       };
+      message.topic = req.body.serial;
       server.publish(message, function() {
       console.log('done!');
       });
@@ -64,11 +68,12 @@ app.post('/ledon', function (req, res) {
 
 app.post('/ledoff', function (req, res) {
       var message = {
-      topic: '/dewee/led/',
+      topic: '',
       payload: '0', // or a Buffer
       qos: 0, // 0, 1, or 2
       retain: false // or true
       };
+      message.topic = req.body.serial;
       server.publish(message, function() {
       console.log('done!');
       });
