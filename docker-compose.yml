@@ -11,6 +11,17 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - mongo
+    environment:
+      - VIRTUAL_HOST=www.dewee.org
+      - VIRTUAL_NETWORK=nginx-proxy
+      - VIRTUAL_PORT=8099
+      - LETSENCRYPT_HOST=www.dewee.org
+      - LETSENCRYPT_EMAIL=eedgaar@hotmail.com
 
   mongo:
     image: mongo
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

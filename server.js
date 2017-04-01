@@ -35,6 +35,19 @@ function setup() {
 
 }
 
+function delayed_off() {
+
+      var message = {
+      topic: 'cmnd/sonoff/POWER',
+      payload: 'off', // or a Buffer
+      qos: 0, // 0, 1, or 2
+      retain: false // or true
+      };
+      server.publish(message, function() {
+      console.log('done!');
+      });
+}
+
 // *** API routing
 var bodyParser = require('body-parser');
 var express = require('express');
@@ -43,37 +56,37 @@ var router = express.Router();
   
 var path = __dirname + '/views/';
   
-//app.use('/',router);
+
+app.use(express.static('public'))
 
 // parse html forms
 app.use(bodyParser.urlencoded({ extended : false }));
   
 app.get('/',function(req, res){
-  res.sendFile(path + 'index.html');
+  res.sendFile(path + 'index2.html');
 });
  
-app.post('/ledon', function (req, res) {
+app.post('/valveon', function (req, res) {
       var message = {
-      topic: '',
-      payload: '1', // or a Buffer
+      topic: 'cmnd/sonoff/POWER',
+      payload: 'on', // or a Buffer
       qos: 0, // 0, 1, or 2
       retain: false // or true
       };
-      message.topic = req.body.serial;
       server.publish(message, function() {
       console.log('done!');
       });
+setTimeout(delayed_off, 3000);
   res.redirect('/');
 });
 
-app.post('/ledoff', function (req, res) {
+app.post('/valveoff', function (req, res) {
       var message = {
-      topic: '',
-      payload: '0', // or a Buffer
+      topic: 'cmnd/sonoff/POWER',
+      payload: 'off', // or a Buffer
       qos: 0, // 0, 1, or 2
       retain: false // or true
       };
-      message.topic = req.body.serial;
       server.publish(message, function() {
       console.log('done!');
       });

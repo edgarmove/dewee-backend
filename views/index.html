@@ -5,34 +5,11 @@
 <body>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 
-<form method="post">
+<form action="/login" method="post">
   <div class="row">
-       <div class="col-sm-12 text-center">
-           <label>Serial:</label>
-           <input type="text" name="serial" id="serial" class="form-control" value="" style="text-align:center;"  />
-           <button id="btnledon" class="btn btn-primary btn-md center-block" Style="width: 100px;" formaction="/ledon">on</button>
-           <button id="btnledoff" class="btn btn-danger btn-md center-block" Style="width: 100px;" formaction="/ledoff">off</button>
-       </div>
+           <button id="btnledon" class="btn btn-primary btn-md center-block" Style="width: 100px;" formaction="/valveon">on</button>
   </div>
 </form>
 
-<script type="text/javascript">
-$(document).ready(function () {
-    function init() {
-        if (localStorage["serial"]) {
-            $('#serial').val(localStorage["serial"]);
-        }
-    }
-        init();
-});
-
-$('.form-control').change(function () {
-    localStorage[$(this).attr('name')] = $(this).val();
-});
-
-$('#localStorageTest').submit(function() {
-        localStorage.clear();
-});
-</script>
 </body>
 </html>

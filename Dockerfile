@@ -14,7 +14,7 @@ RUN apk update && \
 # Bundle app source
 COPY . /usr/src/app
 
-EXPOSE 8080
+EXPOSE 80
 EXPOSE 1883
 
 CMD [ "npm", "start" ]
