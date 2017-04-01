@@ -1,3 +1,5 @@
+var io = require('socket.io')(http);
+var pug = require('pug');
 
 // *** Initializing  Mosca Server
 var mosca = require('mosca');
