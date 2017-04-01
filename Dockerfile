@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package.json /usr/src/app/
 RUN apk update && \
     apk add make gcc g++ python git nano && \
-    npm install  --unsafe-perm --production && \
+    npm install --unsafe-perm --production && \
     apk del make gcc g++ python git
 
 # Bundle app source
