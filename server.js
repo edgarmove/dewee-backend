@@ -1,4 +1,4 @@
-var io = require('socket.io')(http);
+var io = require('socket.io')();
 var pug = require('pug');
 
 // *** Initializing  Mosca Server
@@ -96,4 +96,4 @@ app.post('/valveoff', function (req, res) {
 });
 
 
-app.listen(8080);
+app.listen(80);
