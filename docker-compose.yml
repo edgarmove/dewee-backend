@@ -12,10 +12,10 @@ services:
     depends_on:
       - mongo
     environment:
-      - VIRTUAL_HOST=www.dewee.org
+      - VIRTUAL_HOST=dewee.org,www.dewee.org
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=www.dewee.org
+      - LETSENCRYPT_HOST=dewee.org,www.dewee.org
       - LETSENCRYPT_EMAIL=eedgaar@hotmail.com
 
   mongo:
